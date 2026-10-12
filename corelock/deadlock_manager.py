@@ -1,3 +1,5 @@
+# Author: Divyanshi Vatsa
+# Module 5: Deadlock Manager (team TriCoders, CoreLock)
 """
 deadlock_manager.py -- Module 5: Deadlock Manager.
 

@@ -1,3 +1,5 @@
+# Author: Divyanshi Vatsa
+# Module 4: Lock & Concurrency Manager (team TriCoders, CoreLock)
 """
 lock_manager.py -- Module 4: Lock & Concurrency Manager.
 
