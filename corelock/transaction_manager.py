@@ -1,3 +1,5 @@
+   # Author: Sakshi Singh
+   # Module 1: Transaction Manager (team TriCoders, CoreLock)
 """
 transaction_manager.py -- Module 1: Transaction Manager.
 
