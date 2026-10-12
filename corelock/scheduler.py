@@ -1,3 +1,5 @@
+   # Author: Sakshi Singh
+   # Module 2: OS Scheduler (team TriCoders, CoreLock)
 """
 scheduler.py -- Module 2: OS Scheduler.
 
