@@ -1,3 +1,5 @@
+# Author: Anmol Tyagi
+# Module 7: Monitoring & Analytics Dashboard (team TriCoders, CoreLock)
 """
 dashboard/app.py -- CoreLock live dashboard.
 

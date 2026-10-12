@@ -1,3 +1,5 @@
+# Author: Anmol Tyagi
+# Module 6: Recovery Manager (team TriCoders, CoreLock)
 """
 recovery_manager.py -- Module 6: Recovery Manager.
 
