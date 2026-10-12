@@ -1,3 +1,5 @@
+# Author: Divyanshi Vatsa
+# Seat Inventory: Cinema, Screen, Show, Seat data model (team TriCoders, CoreLock)
 """
 seat_inventory.py -- Data model for the Movie Ticket Booking System.
 
