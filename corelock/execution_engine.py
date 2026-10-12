@@ -1,3 +1,5 @@
+# Author: Anmol Tyagi
+# Module 3: Concurrent Execution Engine (team TriCoders, CoreLock)
 """
 execution_engine.py -- Module 3: Concurrent Execution Engine.
 
