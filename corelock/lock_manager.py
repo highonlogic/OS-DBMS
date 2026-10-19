@@ -1,15 +1,5 @@
 # Author: Divyanshi Vatsa
-# Module 4: Lock & Concurrency Manager (team TriCoders, CoreLock)
-"""
-lock_manager.py -- Module 4: Lock & Concurrency Manager.
-
-Strict 2PL with Shared (S) and Exclusive (X) locks on seats.
-
-Compatibility matrix:
-            S-Lock      X-Lock
-  S-Lock    Compatible  Conflict
-  X-Lock    Conflict    Conflict
-"""
+# Module 4: Lock & Concurrency Manager
 
 import threading
 import time
