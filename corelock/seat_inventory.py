@@ -1,5 +1,5 @@
 # Author: Divyanshi Vatsa
-# Seat Inventory: Cinema, Screen, Show, Seat data model
+# Seat Inventory: Cinema, Screen, Show, Seat data models
 
 import threading
 from enum import Enum
