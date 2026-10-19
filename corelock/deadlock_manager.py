@@ -1,18 +1,5 @@
 # Author: Divyanshi Vatsa
-# Module 5: Deadlock Manager (team TriCoders, CoreLock)
-"""
-deadlock_manager.py -- Module 5: Deadlock Manager.
-
-Builds a wait-for graph from LockManager's wait_for edges (waiter -> {holders})
-and detects cycles via DFS. If a cycle is found, chooses the min-work
-transaction as the victim, releases its locks, and marks it ABORTED.
-
-`resolution_delay_s` = grace period (default 0.8s). A cycle must be
-observed for that many seconds before the victim is rolled back. This
-gives the dashboard time to visibly render the wait-for graph and the
-waiting queue -- essential for demonstrating deadlock detection live
-to a mentor / evaluator.
-"""
+# Module 5: Deadlock Manager
 
 import time
 from typing import Dict, List, Optional, Set
