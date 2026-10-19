@@ -1,16 +1,5 @@
 # Author: Divyanshi Vatsa
-# Seat Inventory: Cinema, Screen, Show, Seat data model (team TriCoders, CoreLock)
-"""
-seat_inventory.py -- Data model for the Movie Ticket Booking System.
-
-Hierarchy: Cinema -> Screen -> Show -> Seat grid.
-
-Seat state machine:
-    AVAILABLE -> LOCKED  (S-Lock, seat in cart / browsing)
-    LOCKED    -> BOOKED  (X-Lock upgrade + COMMIT)
-    LOCKED    -> AVAILABLE (ROLLBACK)
-    BOOKED    -> AVAILABLE (Recovery UNDO only)
-"""
+# Seat Inventory: Cinema, Screen, Show, Seat data model
 
 import threading
 from enum import Enum
