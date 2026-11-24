@@ -1,2 +1,13 @@
+# CoreLock dependencies
+
+# Core (used by main.py and console demos)
+# (nothing beyond the Python standard library — threading, json, os, time are stdlib)
+
+# Dashboard
 streamlit>=1.30
 pandas>=2.0
+
+# Phase-III dashboard upgrades
+plotly>=5.18          # real Gantt chart (px.timeline) + benchmark bar charts
+networkx>=3.0         # wait-for graph structure
+matplotlib>=3.7       # wait-for graph rendering

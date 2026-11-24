@@ -1,11 +1,16 @@
-   # Author: Sakshi Singh
-   # Module 1: Transaction Manager (team TriCoders, CoreLock)
+# Author: Sakshi Singh
+# Module 1: Transaction Manager (team TriCoders, CoreLock)
 """
 transaction_manager.py -- Module 1: Transaction Manager.
 
 Tracks the lifecycle of every booking transaction:
     CREATED -> ACTIVE -> (READ / WRITE / WAITING)* -> COMMITTED
                                                     -> ABORTED
+
+Phase-III additions (metrics for the benchmark + dashboard):
+    * lock_wait_s      -- cumulative seconds spent blocked on lock acquires
+    * active_time_s    -- cumulative seconds spent actually running (not blocked)
+    * context_switches -- how many times this txn was preempted (RR only)
 """
 
 import itertools
@@ -58,6 +63,11 @@ class Transaction:
     read_set: Set[str] = field(default_factory=set)
     write_set: Set[str] = field(default_factory=set)
 
+    # ---- Phase-III metrics ----------------------------------------------
+    lock_wait_s: float = 0.0        # total seconds blocked on lock acquires
+    active_time_s: float = 0.0      # total seconds doing actual work
+    context_switches: int = 0       # RR preemptions suffered
+
     def log_operation(self, op_type: OpType, seat_id: Optional[str] = None):
         self.operations.append(Operation(op_type, seat_id))
         if op_type == OpType.READ and seat_id:
@@ -86,7 +96,9 @@ class Transaction:
             "state": self.state.value,
             "waiting_on": self.waiting_on_seat or "-",
             "wait_s": round(self.waiting_time, 3),
+            "lock_wait_s": round(self.lock_wait_s, 3),
             "turnaround_s": round(self.turnaround_time, 3),
+            "ctx_switches": self.context_switches,
             "ops": len(self.operations),
             "reason": self.abort_reason or "-",
         }
@@ -131,6 +143,19 @@ class TransactionManager:
         txn.waiting_on_seat = None
         if reason:
             txn.abort_reason = reason
+
+    # ---- Phase-III metric helpers ---------------------------------------
+    def add_lock_wait(self, txn: Transaction, seconds: float):
+        """Called by ExecutionEngine after every lock acquire attempt."""
+        if seconds > 0:
+            txn.lock_wait_s += seconds
+
+    def add_active_time(self, txn: Transaction, seconds: float):
+        if seconds > 0:
+            txn.active_time_s += seconds
+
+    def record_context_switch(self, txn: Transaction):
+        txn.context_switches += 1
 
     def all_snapshots(self) -> List[dict]:
         with self._lock:
